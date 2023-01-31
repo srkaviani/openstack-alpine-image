@@ -29,6 +29,9 @@ step 'Download cloud.cfg file'
 rm /etc/cloud/cloud.cfg
 wget -O /etc/cloud/cloud.cfg https://raw.githubusercontent.com/linitio/openstack-alpine-image/main/config/cloud.cfg
 
+step 'Add route for Openstack metadata Service'
+ip route add 169.254.169.254/32 dev eth0
+
 step 'Enable services'
 rc-update add acpid default
 rc-update add chronyd default
